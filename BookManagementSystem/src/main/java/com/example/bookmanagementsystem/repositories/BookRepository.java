@@ -14,16 +14,17 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Override
     List<Book> findAll();
 
+    Optional<Book> findById(Long id);
+
     @Override
     Book save(Book book);
 
-    Optional<Book> findBookByTitle(String title);
+    List<Optional<Book>> findBookByTitle(String title);
 
-    List<Book> findBooksByAuthor(Author author);
+    List<Optional<Book>> findBookByAuthor(String authorName);
 
-    List<Book> findBooksByGenre(Genre genre);
+    List<Optional<Book>> findBookByGenre(Genre genre);
 
     @Override
-    void deleteById(Long id);
-
+    void delete(Book book);
 }
